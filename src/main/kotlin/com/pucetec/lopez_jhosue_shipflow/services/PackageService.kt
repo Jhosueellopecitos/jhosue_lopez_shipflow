@@ -52,7 +52,7 @@ class PackageService(
         val shipment = packageRepo.findByTrackingId(trackingId)
             ?: throw IllegalArgumentException("Envío no encontrado")
 
-        // Reglas de transición
+
         val validTransitions = mapOf(
             Status.PENDING to listOf(Status.IN_TRANSIT),
             Status.IN_TRANSIT to listOf(Status.DELIVERED, Status.ON_HOLD, Status.CANCELLED),
@@ -71,7 +71,6 @@ class PackageService(
             throw IllegalStateException("No se puede pasar de $current a $newStatus")
         }
 
-        // Validación extra: DELIVERED solo si estuvo alguna vez en IN_TRANSIT
         if (newStatus == Status.DELIVERED) {
             val everInTransit = historyRepo.existsByShipmentAndStatus(shipment, Status.IN_TRANSIT)
             if (!everInTransit && current != Status.IN_TRANSIT) {
@@ -79,7 +78,7 @@ class PackageService(
             }
         }
 
-        // Guardar historial
+
         val history = PackageHistory(
             status = newStatus,
             shipment = shipment,
@@ -87,7 +86,7 @@ class PackageService(
         )
         historyRepo.save(history)
 
-        // Actualizar estado del paquete
+
         shipment.status = newStatus
         packageRepo.save(shipment)
     }

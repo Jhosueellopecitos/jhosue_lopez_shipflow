@@ -24,10 +24,10 @@ data class Package(
     @Enumerated(EnumType.STRING)
     var status: Status = Status.PENDING,
 
-    val trackingId: String = "",  // ✅ NUEVO
+    val trackingId: String = "",
 
     @Column(name = "estimated_delivery_date")
-    val estimatedDeliveryDate: LocalDateTime = LocalDateTime.now().plusDays(5),  // ✅ NUEVO
+    val estimatedDeliveryDate: LocalDateTime = LocalDateTime.now().plusDays(5),
 
 
     @OneToMany(mappedBy = "shipment", cascade = [CascadeType.ALL], orphanRemoval = true)

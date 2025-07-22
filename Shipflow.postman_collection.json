@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "ea8bcc66-d705-41eb-8c56-9c13e69e3e5e",
+		"name": "Shipflow",
+		"description": "Esta coleccion esta hecha para realizar pruebas de los endpoints encargados de las pruebas y el historial de los pedidos y corroborar que funcionen segun lo planteado",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "45258014",
+		"_collection_link": "https://jhosue-6452059.postman.co/workspace/jhosue's-Workspace~d4d11078-b825-46f4-8c1a-e6d309ed0e0a/collection/45258014-ea8bcc66-d705-41eb-8c56-9c13e69e3e5e?action=share&source=collection_link&creator=45258014"
+	},
+	"item": [
+		{
+			"name": "Crear Pedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"DOCUMENT\",       \r\n  \"weight\": 0.9,           \r\n  \"description\": \"Levantamiento de  Requisitos\",  \r\n  \"city_from\": \"Esmeraldas\",    \r\n  \"city_to\": \"Quito\"   \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/api/packages"
+			},
+			"response": []
+		},
+		{
+			"name": "Mod. Pedido",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/packages/{trackingId}/status",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"packages",
+						"{trackingId}",
+						"status"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "IN_TRANSIT",
+							"disabled": true
+						},
+						{
+							"key": "comment",
+							"value": "Enviado",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "CANCELLED",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "DELIVERED",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener historial",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/api/packages/{trackingId}/history"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:8080",
+			"type": "default"
+		}
+	]
+}
