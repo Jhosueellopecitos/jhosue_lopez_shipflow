@@ -17,13 +17,13 @@ Este proyecto es una aplicación dedicada a la gestion de entrega de tareas con 
 
 - Abre el proyecto en IntelliJ.
 
-- Dirigirse a la carpeta donde esta el archivo docker-compose y ejecutar el docker-compose:
+- Dirigirse a la carpeta resource donde esta el archivo docker-compose y ejecutar el siguiente comando:
 ```
 docker-compose up -d
 ```
 - Ejecuta la clase principal:
 ```
-com.puce.
+com.pucetec.LopezJhosueShipflowApplication.kt
 ```
 
 - El servidor se iniciará en:
@@ -43,32 +43,16 @@ docker-compose down
 
 Si se desea realizar las pruebas referentes al funcionamiento del proyecto, ejecutar en Postman las siguientes direcciones en base a la prueba que desee realizar:
 
-*En las secciones con {trackingid} reemplazarlo con el id del envio*
-
-**Usuarios**
-
-- POST /api/users - Crear usuario
-
-- GET /api/users - Obtener todos
-
-- GET /api/users/{id} - Por ID
-
-- PUT /api/users/{id} - Actualizar
-
-- DELETE /api/users/{id} - Eliminar
+*En las secciones con {trackingId} reemplazarlo con el id del envio*
 
 
 
-**Tareas (Assignments)**
+**Paquetes (Package)**
 
-- POST /api/assignments - Crear tarea (requiere user)
+- POST /api/packages - Crear entrega
 
-- GET /api/assignments - Todas las tareas
+- GET /api/packages/{trackingId} - Obtener detalles de una entrega
 
-- GET /api/assignments/{id} - Por ID
+- PUT /api/packages/{trackingId}/status - Actualizar el estado y comentario de la entrega
 
-- GET /api/assignments/user/{userId} - Por usuario
-
-- PUT /api/assignments/{id} - Actualizar
-
-- DELETE /api/assignments/{id} - Eliminar
+- GET /api/packages/{trackingId}/history - Obtener el historial de cambios de estado de la entrega
