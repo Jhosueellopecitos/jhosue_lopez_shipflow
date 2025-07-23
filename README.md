@@ -39,6 +39,20 @@ http://localhost:8080
 docker-compose down
 ```
 
+## Ejecutar coleccion de Postman para las tareas
+
+Para importar la coleccion que tiene las pruebas de endpoints realizar los siguientes pasos:
+
+- Abrir Postman
+- En el menu izquierdo, en la parte superior dar click en el boton **import**
+- En la ventana que aparece dar click en el boton files
+- Navegar hasta la carpeta del proyecto y en la ruta raiz estara el documento
+  
+```
+ shipflow.postman_collection
+```
+-Seleccionalo y en el postman aparecera la coleccion.
+
 ## Pruebas de Endpoint para garantizar funcionamiento 
 
 Si se desea realizar las pruebas referentes al funcionamiento del proyecto, ejecutar en Postman las siguientes direcciones en base a la prueba que desee realizar:
