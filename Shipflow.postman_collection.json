@@ -76,6 +76,15 @@
 				"url": "{{baseURL}}/api/packages/{trackingId}/history"
 			},
 			"response": []
+		},
+		{
+			"name": "Obtener detalles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/api/packages/{trackingId}"
+			},
+			"response": []
 		}
 	],
 	"variable": [
