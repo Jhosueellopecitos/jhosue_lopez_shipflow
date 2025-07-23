@@ -51,7 +51,7 @@ Para importar la coleccion que tiene las pruebas de endpoints realizar los sigui
 ```
  shipflow.postman_collection
 ```
--Seleccionalo y en el postman aparecera la coleccion.
+- Seleccionalo y en el Postman aparecera la coleccion.
 
 ## Pruebas de Endpoint para garantizar funcionamiento 
 
