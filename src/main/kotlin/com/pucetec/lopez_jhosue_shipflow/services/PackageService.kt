@@ -65,17 +65,17 @@ class PackageService(
             throw IllegalStateException("El estado $current es final y no puede cambiarse")
         }
 
-        val validNextStates = validTransitions[current] ?: emptyList()
-
-        if (!validNextStates.contains(newStatus) && current != newStatus) {
-            throw IllegalStateException("No se puede pasar de $current a $newStatus")
-        }
-
         if (newStatus == Status.DELIVERED) {
             val everInTransit = historyRepo.existsByShipmentAndStatus(shipment, Status.IN_TRANSIT)
             if (!everInTransit && current != Status.IN_TRANSIT) {
                 throw IllegalStateException("Solo se puede marcar como entregado si estuvo en tránsito")
             }
+        }
+
+        val validNextStates = validTransitions[current] ?: emptyList()
+
+        if (!validNextStates.contains(newStatus) && current != newStatus) {
+            throw IllegalStateException("No se puede pasar de $current a $newStatus")
         }
 
 

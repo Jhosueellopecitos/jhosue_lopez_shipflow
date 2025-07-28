@@ -2,6 +2,7 @@ package com.pucetec.lopez_jhosue_shipflow.models.entities
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference
+import com.fasterxml.jackson.annotation.JsonValue
 import jakarta.persistence.*
 import org.hibernate.engine.internal.Cascade
 import java.time.LocalDateTime
@@ -9,6 +10,10 @@ import java.time.LocalDateTime
 @Entity
 @Table(name = "packages")
 data class Package(
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long = 0,
     val type: Type,
     val weight: Float,
 
@@ -43,5 +48,16 @@ enum class Type(val code: String) {
     SMALL_BOX("SB"),
     FRAGILE("F");
 
-    override fun toString() = code
+    companion object {
+        fun fromCode(code: String): Type {
+            return values().firstOrNull { it.code == code || it.name == code }
+                ?: throw IllegalArgumentException("Tipo inválido: $code")
+        }
+    }
+
+    @JsonValue
+    fun toValue(): String {
+        return code
+    }
 }
+

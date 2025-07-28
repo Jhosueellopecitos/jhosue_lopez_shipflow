@@ -7,6 +7,10 @@ import jakarta.persistence.*
 @Entity
 @Table(name = "package_history")
 data class PackageHistory(
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long = 0,
     @Enumerated(EnumType.STRING)
     val status: Status,
 
@@ -21,11 +25,11 @@ data class PackageHistory(
 
 
 enum class Status(val code: String) {
-    PENDING("P"),
-    IN_TRANSIT("IT"),
-    DELIVERED("D"),
-    ON_HOLD("OH"),
-    CANCELLED("C");
+    PENDING("PENDING"),
+    IN_TRANSIT("IN_TRANSIT"),
+    DELIVERED("DELIVERED"),
+    ON_HOLD("ON_HOLD"),
+    CANCELLED("CANCELLED");
 
     override fun toString() = code
 }

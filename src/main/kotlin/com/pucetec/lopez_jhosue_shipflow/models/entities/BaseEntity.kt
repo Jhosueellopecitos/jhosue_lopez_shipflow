@@ -5,9 +5,6 @@ import java.time.LocalDateTime
 
 @MappedSuperclass
 abstract class BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long = 0
 
     @Column(name = "created_at")
     val createdAt: LocalDateTime = LocalDateTime.now()
